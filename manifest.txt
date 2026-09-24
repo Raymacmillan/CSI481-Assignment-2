@@ -1,0 +1,2 @@
+Main-Class: csi481.Main
+Class-Path: mysql-connector-j-9.7.0.jar

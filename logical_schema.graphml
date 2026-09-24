@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+         xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java"
+         xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0"
+         xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:y="http://www.yworks.com/xml/graphml"
+         xmlns:yed="http://www.yworks.com/xml/yed/3"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <key for="node" id="d0" yfiles.type="nodegraphics"/>
+  <key for="edge" id="d1" yfiles.type="edgegraphics"/>
+  <key for="graphml" id="d2" yfiles.type="resources"/>
+  <graph id="G" edgedefault="directed">
+    <node id="District">
+      <data key="d0">
+        <y:UMLClassNode>
+          <y:Geometry height="146" width="260" x="520" y="0"/>
+          <y:Fill color="#FFF9DC" transparent="false"/>
+          <y:BorderStyle color="#8A8A5C" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true">District
+(from ImmunisationDB)</y:NodeLabel>
+          <y:UML clipContent="true" constraint="" hasDetailsBox="true" stereotype="" use3DEffect="false">
+            <y:AttributeLabel>PK  DistrictID : INT
+     Name : VARCHAR(100)</y:AttributeLabel>
+      <y:MethodLabel>&lt;&lt;PK&gt;&gt; PK_District()</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="Practice">
+      <data key="d0">
+        <y:UMLClassNode>
+          <y:Geometry height="180" width="260" x="520" y="230"/>
+          <y:Fill color="#FFF9DC" transparent="false"/>
+          <y:BorderStyle color="#8A8A5C" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true">Practice
+(from ImmunisationDB)</y:NodeLabel>
+          <y:UML clipContent="true" constraint="" hasDetailsBox="true" stereotype="" use3DEffect="false">
+            <y:AttributeLabel>PK  PracticeID : INT
+     Location : VARCHAR(150)
+     DistrictID : INT</y:AttributeLabel>
+      <y:MethodLabel>&lt;&lt;PK&gt;&gt; PK_Practice()
+&lt;&lt;FK&gt;&gt; FK_Practice_District()</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="Guardian">
+      <data key="d0">
+        <y:UMLClassNode>
+          <y:Geometry height="146" width="250" x="100" y="480"/>
+          <y:Fill color="#FFF9DC" transparent="false"/>
+          <y:BorderStyle color="#8A8A5C" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true">Guardian
+(from ImmunisationDB)</y:NodeLabel>
+          <y:UML clipContent="true" constraint="" hasDetailsBox="true" stereotype="" use3DEffect="false">
+            <y:AttributeLabel>PK  ONo : INT
+     Name : VARCHAR(100)</y:AttributeLabel>
+      <y:MethodLabel>&lt;&lt;PK&gt;&gt; PK_Guardian()</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="GP">
+      <data key="d0">
+        <y:UMLClassNode>
+          <y:Geometry height="180" width="260" x="520" y="480"/>
+          <y:Fill color="#FFF9DC" transparent="false"/>
+          <y:BorderStyle color="#8A8A5C" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true">GP
+(from ImmunisationDB)</y:NodeLabel>
+          <y:UML clipContent="true" constraint="" hasDetailsBox="true" stereotype="" use3DEffect="false">
+            <y:AttributeLabel>PK  GPNo : INT
+     Name : VARCHAR(100)
+     PracticeID : INT</y:AttributeLabel>
+      <y:MethodLabel>&lt;&lt;PK&gt;&gt; PK_GP()
+&lt;&lt;FK&gt;&gt; FK_GP_Practice()</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="Vaccine">
+      <data key="d0">
+        <y:UMLClassNode>
+          <y:Geometry height="182" width="260" x="940" y="480"/>
+          <y:Fill color="#FFF9DC" transparent="false"/>
+          <y:BorderStyle color="#8A8A5C" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true">Vaccine
+(from ImmunisationDB)</y:NodeLabel>
+          <y:UML clipContent="true" constraint="" hasDetailsBox="true" stereotype="" use3DEffect="false">
+            <y:AttributeLabel>PK  VaccineID : INT
+     Name : VARCHAR(100)
+     Manufacturer : VARCHAR(100)
+     Type : VARCHAR(50)</y:AttributeLabel>
+      <y:MethodLabel>&lt;&lt;PK&gt;&gt; PK_Vaccine()</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="Patient">
+      <data key="d0">
+        <y:UMLClassNode>
+          <y:Geometry height="232" width="270" x="100" y="760"/>
+          <y:Fill color="#FFF9DC" transparent="false"/>
+          <y:BorderStyle color="#8A8A5C" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true">Patient
+(from ImmunisationDB)</y:NodeLabel>
+          <y:UML clipContent="true" constraint="" hasDetailsBox="true" stereotype="" use3DEffect="false">
+            <y:AttributeLabel>PK  BirthCertNo : INT
+     Name : VARCHAR(100)
+     DateOfBirth : DATE
+     ONo : INT
+     GPNo : INT</y:AttributeLabel>
+      <y:MethodLabel>&lt;&lt;PK&gt;&gt; PK_Patient()
+&lt;&lt;FK&gt;&gt; FK_Patient_Guardian()
+&lt;&lt;FK&gt;&gt; FK_Patient_GP()</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="Vaccination">
+      <data key="d0">
+        <y:UMLClassNode>
+          <y:Geometry height="284" width="280" x="520" y="1060"/>
+          <y:Fill color="#FFF9DC" transparent="false"/>
+          <y:BorderStyle color="#8A8A5C" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true">Vaccination
+(from ImmunisationDB)</y:NodeLabel>
+          <y:UML clipContent="true" constraint="" hasDetailsBox="true" stereotype="" use3DEffect="false">
+            <y:AttributeLabel>PK  VaccinationID : INT
+     DateOfVac : DATE
+     BoosterNo : INT
+     BatchNo : VARCHAR(50)
+     BirthCertNo : INT
+     GPNo : INT
+     VaccineID : INT</y:AttributeLabel>
+      <y:MethodLabel>&lt;&lt;PK&gt;&gt; PK_Vaccination()
+&lt;&lt;FK&gt;&gt; FK_Vaccination_Patient()
+&lt;&lt;FK&gt;&gt; FK_Vaccination_GP()
+&lt;&lt;FK&gt;&gt; FK_Vaccination_Vaccine()</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="Appointment">
+      <data key="d0">
+        <y:UMLClassNode>
+          <y:Geometry height="284" width="280" x="100" y="1060"/>
+          <y:Fill color="#FFF9DC" transparent="false"/>
+          <y:BorderStyle color="#B7791F" type="dashed" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true">Appointment
+(from ImmunisationDB, added beyond diagram)</y:NodeLabel>
+          <y:UML clipContent="true" constraint="" hasDetailsBox="true" stereotype="" use3DEffect="false">
+            <y:AttributeLabel>PK  AppointmentID : INT
+     ScheduledDate : DATE
+     BoosterNo : INT
+     BirthCertNo : INT
+     GPNo : INT
+     VaccineID : INT
+     Status : ENUM</y:AttributeLabel>
+      <y:MethodLabel>&lt;&lt;PK&gt;&gt; PK_Appointment()
+&lt;&lt;FK&gt;&gt; FK_Appointment_Patient()
+&lt;&lt;FK&gt;&gt; FK_Appointment_GP()
+&lt;&lt;FK&gt;&gt; FK_Appointment_Vaccine()</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <edge id="e0" source="District" target="Practice">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">has  (1 -- 1..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e1" source="Practice" target="GP">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">has  (1 -- 1..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e2" source="Guardian" target="Patient">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">(1 -- 1..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e3" source="GP" target="Patient">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">caresFor  (1 -- 1..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="Patient" target="Vaccination">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">given  (1 -- 1..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="GP" target="Vaccination">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">gives  (1 -- 1..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e6" source="Vaccine" target="Vaccination">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">givenAs  (1 -- 1..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e7" source="Patient" target="Appointment">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">(1 -- 0..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e8" source="GP" target="Appointment">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">appointedFor  (1 -- 0..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e9" source="Vaccine" target="Appointment">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#555555" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="9" fontStyle="italic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#333333" verticalTextPosition="bottom" visible="true">(1 -- 0..n)</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+  <data key="d2">
+    <y:Resources/>
+  </data>
+</graphml>
