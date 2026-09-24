@@ -18,8 +18,8 @@
 
 2. **Edit the hardcoded credentials** to match your MariaDB root password (or a dedicated app user), in `src/csi481/db/DBConnection.java`:
    ```java
-   private static final String USER = "root";
-   private static final String PASSWORD = "millanryo2004!";
+   private static final String USER = "csi481app";
+   private static final String PASSWORD = "Csi481Pass!";
    ```
    Change `PASSWORD` to whatever your actual MariaDB password is. This is the file the assignment's "hardcode the username/password" requirement refers to.
 
