@@ -1,14 +1,23 @@
 # CSI481 Assignment 2 — Infant Immunisation Recording System
 
-## What's in this package
+## What gets submitted
 
-- `logical.pdf` — the required logical design document. Submit this as-is once your group's names/IDs are filled in on page 1.
+Exactly **two files**, nothing else:
+
+1. `dist/InfantImmunisationSystem.jar` — the application. It is a **self-contained ("fat") JAR**: the MySQL/MariaDB Connector/J driver is bundled inside it, so it runs on its own without any other JAR next to it.
+2. `logical.pdf` — the logical design document (fill in the group's names/IDs on page 1 first).
+
+## What's in this repository
+
+- `dist/InfantImmunisationSystem.jar` — the self-contained application JAR (the submission file).
+- `dist/mysql-connector-j-9.7.0.jar` — the JDBC driver. Only needed when **rebuilding** the fat JAR; it is not needed to run the app.
+- `logical.pdf` / `logical.docx` — the logical design document.
 - `sql/schema.sql` — creates the `csi481_immunisation` database and all seven tables with constraints.
-- `sql/seed.sql` — test data for every table (run after schema.sql).
-- `dist/InfantImmunisationSystem.jar` — the compiled application.
-- `src/` — full Java source, in case you need to change anything (e.g. the hardcoded DB password) and rebuild.
+- `sql/seed.sql` — test data for every table (run after `schema.sql`).
+- `src/` — full Java source.
+- `manifest.txt` — JAR manifest (`Main-Class` only; no `Class-Path`, since the driver is bundled).
 
-## One-time setup on your machine
+## Setup and running
 
 1. Load the schema and test data into MariaDB:
    ```bash
@@ -16,33 +25,41 @@
    sudo mariadb -u root -p < sql/seed.sql
    ```
 
-2. **Edit the hardcoded credentials** to match your MariaDB root password (or a dedicated app user), in `src/csi481/db/DBConnection.java`:
+2. The database credentials are **hard-coded** (as the assignment requires) in `src/csi481/db/DBConnection.java`:
    ```java
    private static final String USER = "csi481app";
    private static final String PASSWORD = "Csi481Pass!";
    ```
-   Change `PASSWORD` to whatever your actual MariaDB password is. This is the file the assignment's "hardcode the username/password" requirement refers to.
+   Make sure a MariaDB user with these credentials exists and has access to `csi481_immunisation`, or change the values to match your server and rebuild (step 3).
 
-3. Rebuild the JAR after any change to `DBConnection.java`:
+3. Rebuild the self-contained JAR (only needed after changing the source):
    ```bash
-   cd csi481-project
    find src -name "*.java" > sources.txt
-   rm -rf build && mkdir build
-   javac -d build -cp src @sources.txt
-   jar --create --file dist/InfantImmunisationSystem.jar --manifest manifest.txt -C build .
+   rm -rf build_fat && mkdir build_fat
+   javac -d build_fat -cp src @sources.txt
+   (cd build_fat && jar xf ../dist/mysql-connector-j-9.7.0.jar)
+   rm -f build_fat/META-INF/MANIFEST.MF
+   jar --create --file dist/InfantImmunisationSystem.jar --manifest manifest.txt -C build_fat .
    ```
+   This compiles the application, unpacks the Connector/J driver into the same build folder, and packages both into one JAR.
 
-4. Place the MySQL/MariaDB Connector/J jar (`mysql-connector-j-9.7.0.jar`, the one you already downloaded to `~/Documents/CSI481/practice/lib/`) **in the same folder as `InfantImmunisationSystem.jar`**. The manifest's `Class-Path` entry expects it right next to the JAR, not in a `lib/` subfolder — copy it there rather than relying on a relative `lib/` path, since manifest classpaths are resolved relative to the JAR's own location and a bare filename means "same directory."
-
-5. Run it:
+4. Run it — from **any** folder, with nothing else alongside it:
    ```bash
-   cd dist
    java -jar InfantImmunisationSystem.jar
    ```
 
-## Why the compile-verification here does not equal a runtime test
+## Verifying the submission JAR
 
-This project was written and compiled inside a sandbox with no MariaDB server, no JDBC driver reachable over the network, and no display. Everything that `javac` can check has been checked: all 27 source files compile cleanly against the JDK with zero errors. Actually clicking through every screen against a live MariaDB instance and confirming inserts land correctly, dropdowns populate, and reports return the expected rows is something only you can do on your Kali machine, exactly like the JDBC connection test earlier in this project. Run it, work through each of the five sidebar screens against the seeded test data, and report back anything that doesn't behave as documented here.
+The real test is running the JAR from a folder that contains **only** that one file — exactly what the lecturer will have:
+
+```bash
+mkdir -p /tmp/jartest
+cp dist/InfantImmunisationSystem.jar /tmp/jartest/
+cd /tmp/jartest
+java -jar InfantImmunisationSystem.jar
+```
+
+If the main window ("CSI481 -- Infant Immunisation Recording System") opens, the driver is bundled correctly and the hard-coded credentials connect. If a "Database Connection Failed" dialog appears instead, MariaDB is not running or the credentials in `DBConnection.java` don't match the server. Once it opens, work through each of the five sidebar screens against the seeded test data.
 
 ## What the five sidebar screens map to in the assignment brief
 
